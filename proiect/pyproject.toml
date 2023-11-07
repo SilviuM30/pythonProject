@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "poetry add {binance}"
+version = "0.1.0"
+description = "Binance"
+authors = ["SilviuM30 <silviumarpozan30@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+binance = "^0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
