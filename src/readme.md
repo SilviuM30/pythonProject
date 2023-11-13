@@ -34,9 +34,8 @@ The BOT is not capable to close the position only when the trigger is pressed ba
 ``` 
 pip instal poetry
 poetry install
-poetry run python robotfutures.py
-or
-poetry run python src/robotfutures.py
+poetry run python .\src\ROBOTFUTURES.py
+
 ``` 
 
 ## Process flow
