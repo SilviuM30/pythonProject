@@ -1,6 +1,6 @@
  # Welcome to my Binance futures project
 
-1. Take care , trading is with high risk potential always adjust your trading base on your knowleage and your personal research.
+1. Take care , trading is with high risk potentiaalways adjust your trading base on your knowleage and your personal research.
 2. Always DYOR(Do your own research)
 3. This bot is not a financial advice it is just for educational purpose
 
@@ -32,14 +32,7 @@ The BOT is not capable to close the position only when the trigger is pressed ba
 ## Installation --> poetry
 
 ``` 
-pip install binance
-from binance.client import Client
-import subprocess
-pip numpy
-import numpy as np
-pip intall tkinker
-import tkinter as tk
-from tkinter import Label, Entry, Button
+poetry run src/robotfutures.py
 ``` 
 
 ## Process flow

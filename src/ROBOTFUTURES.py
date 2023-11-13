@@ -6,52 +6,52 @@ from binance.client import Client
 import time
 import subprocess
 
-# Function to save the API keys
-def save_keys():
-    api_key = api_key_entry.get()
-    api_secret = api_secret_entry.get()
-    keys = {"api_key": api_key, "api_secret": api_secret}
 
-    with open('api_keys.json', 'w') as f:
-        json.dump(keys, f)
+class BinanceKeySetup:
+    def __init__(self):
+        self.root = tk.Tk()
+        self.root.title("Binance API Key Setup")
+        self.root.geometry("300x200")
 
-    root.quit()  # Close the Tkinter window after saving the keys
+        # Create labels and entry fields for API Key and API Secret
+        self.api_key_label = Label(self.root, text="Binance API Key:")
+        self.api_key_label.pack()
+        self.api_key_entry = Entry(self.root)
+        self.api_key_entry.pack()
 
-# Function to synchronize the PC's clock
-def synchronize_clock():
-    try:
-        subprocess.run(["w32tm", "/resync"])
-        print("PC clock synchronized successfully.")
-    except Exception as e:
-        print("Error synchronizing PC clock:", e)
+        self.api_secret_label = Label(self.root, text="API Secret Key:")
+        self.api_secret_label.pack()
+        self.api_secret_entry = Entry(self.root, show="*")  # The show option hides the entered text
+        self.api_secret_entry.pack()
 
-# Create the Tkinter window
-root = tk.Tk()
-root.title("Binance API Key Setup")
-root.geometry("300x200")
+        # Create a button to save the keys
+        save_button = Button(self.root, text="Save Keys", command=self.save_keys)
+        save_button.pack()
 
-# Create labels and entry fields for API Key and API Secret
-api_key_label = Label(root, text="Binance API Key:")
-api_key_label.pack()
-api_key_entry = Entry(root)
-api_key_entry.pack()
+        # Create a button to synchronize the PC's clock
+        sync_clock_button = Button(self.root, text="Sync PC Clock", command=self.synchronize_clock)
+        sync_clock_button.pack()
 
-api_secret_label = Label(root, text="API Secret Key:")
-api_secret_label.pack()
-api_secret_entry = Entry(root, show="*")  # The show option hides the entered text
-api_secret_entry.pack()
+    def save_keys(self):
+        api_key = self.api_key_entry.get()
+        api_secret = self.api_secret_entry.get()
+        keys = {"api_key": api_key, "api_secret": api_secret}
 
-# Create a button to save the keys
-save_button = Button(root, text="Save Keys", command=save_keys)
-save_button.pack()
+        with open('api_keys.json', 'w') as f:
+            json.dump(keys, f)
 
-# Create a button to synchronize the PC's clock
-sync_clock_button = Button(root, text="Sync PC Clock", command=synchronize_clock)
-sync_clock_button.pack()
+        self.root.quit()  # Close the Tkinter window after saving the keys
 
-# Start the Tkinter main loop
-root.mainloop()
+    def synchronize_clock(self):
+        try:
+            subprocess.run(["w32tm", "/resync"])
+            print("PC clock synchronized successfully.")
+        except Exception as e:
+            print("Error synchronizing PC clock:", e)
 
+    def run(self):
+        # Start the Tkinter main loop
+        self.root.mainloop()
 
 # Load API keys from the JSON file
 with open('api_keys.json') as f:
@@ -63,7 +63,12 @@ client = Client(api_key, api_secret)
 
 take_profit_target = 10
 
-# CREATE A CLASS FROM STRATEGY
+# Create an instance of BinanceKeySetup class and run the Tkinter application
+binance_setup = BinanceKeySetup()
+binance_setup.run()
+
+
+
 
 
 # Define your trading strategy
