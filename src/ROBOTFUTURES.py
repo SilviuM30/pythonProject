@@ -37,7 +37,7 @@ class BinanceKeySetup:
         api_secret = self.api_secret_entry.get()
         keys = {"api_key": api_key, "api_secret": api_secret}
 
-        with open('api_keys.json', 'w') as f:
+        with open('../Resources/api_keys.json', 'w') as f:
             json.dump(keys, f)
 
         self.root.quit()  # Close the Tkinter window after saving the keys
@@ -54,7 +54,7 @@ class BinanceKeySetup:
         self.root.mainloop()
 
 # Load API keys from the JSON file
-with open('api_keys.json') as f:
+with open('Resources/api_keys.json') as f:
     api_keys = json.load(f)
 
 api_key = api_keys["api_key"]
